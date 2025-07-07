@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Farm Labour Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <button id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <a href="welcome.html" class="nav-logo">GreenFields</a>
+      <ul class="nav-links">
+        <li><a href="welcome.html">Home</a></li>
+        <li><a href="index.html">Manage Labour</a></li>
+        <li><a href="current.html">Current Labours</a></li>
+        <li><a href="old.html">Old Labours</a></li>
+        <li><a href="deleted.html">Deleted Labours</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="#" class="btn-auth">Login</a>
+        <a href="#" class="btn-auth">Register</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container about-container">
+    <h1>About Farm Labour Management</h1>
+    <p>Our website is designed to help farm owners and managers efficiently track and manage their labour workforce.</p>
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question">1. What types of farm labour can I manage with this website?</button>
+        <div class="faq-answer">
+          <p>You can manage all types of farm labour including seasonal workers, permanent staff, and contract labourers.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">2. How does the website help in managing labour details?</button>
+        <div class="faq-answer">
+          <p>The website allows you to record labour details, work dates, crops worked on, wages, and contact information in one place.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">3. Can I track labour work by specific crops?</button>
+        <div class="faq-answer">
+          <p>Yes, you can specify the crop each labourer worked on for each work date, helping you analyze labour allocation.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">4. Is it possible to edit or update labour details?</button>
+        <div class="faq-answer">
+          <p>Absolutely, you can edit any labour details including work dates and crops as needed.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">5. How do I add new labourers?</button>
+        <div class="faq-answer">
+          <p>Use the Manage Labour page to add new labourers by filling out the form with their details.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">6. Can I delete labour records?</button>
+        <div class="faq-answer">
+          <p>Yes, you can delete labour records if they are no longer needed.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">7. Does the website support multiple admins?</button>
+        <div class="faq-answer">
+          <p>Currently, the website supports admin registration and login to manage labour details securely.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">8. How is the data stored and secured?</button>
+        <div class="faq-answer">
+          <p>Data is stored securely in a MongoDB database with access restricted to authorized admins.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">9. Can I generate reports on labour work?</button>
+        <div class="faq-answer">
+          <p>Report generation is a planned feature for future updates to help analyze labour productivity.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">10. How can I get support or provide feedback?</button>
+        <div class="faq-answer">
+          <p>You can contact the development team or use the support channels provided with the application.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isOpen = answer.style.maxHeight;
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = null);
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+  <!-- Login/Register Modal -->
+  <div id="auth-modal" class="auth-modal">
+    <div class="auth-modal-content">
+      <span id="auth-close" class="auth-close">&times;</span>
+      <div class="auth-tabs">
+        <button id="login-tab" class="auth-tab active">Login</button>
+        <button id="register-tab" class="auth-tab">Register</button>
+      </div>
+      <div id="login-form-container" class="auth-form-container">
+        <form id="login-form">
+          <p>If you are already a member, please login.</p>
+          <div>
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+      </div>
+      <div id="register-form-container" class="auth-form-container" style="display:none;">
+        <form id="register-form">
+          <p>If you are not a member, please register.</p>
+          <div>
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div>
+            <label for="register-confirm-password">Confirm Password:</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit" class="btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="nav.js"></script>
+</body>
+</html>

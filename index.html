@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Labour - GreenFields</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <button id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <a href="welcome.html" class="nav-logo">GreenFields</a>
+      <ul class="nav-links">
+        <li><a href="welcome.html">Home</a></li>
+        <li><a href="index.html" class="active">Manage Labour</a></li>
+        <li><a href="current.html">Current Labours</a></li>
+        <li><a href="old.html">Old Labours</a></li>
+        <li><a href="deleted.html">Deleted Labours</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="#" class="btn-auth">Login</a>
+        <a href="#" class="btn-auth">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>Manage Labour</h2>
+    <form id="labour-form">
+      <input type="hidden" id="labour-id" />
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" min="0" />
+      </div>
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" />
+      </div>
+      <div>
+        <label for="workType">Work Type:</label>
+        <select id="workType">
+          <option value="">Select Work Type</option>
+          <option value="Planting">Planting</option>
+          <option value="Weeding">Weeding</option>
+          <option value="Harvesting">Harvesting</option>
+          <option value="Irrigation">Irrigation</option>
+          <option value="Fertilizing">Fertilizing</option>
+          <option value="Pruning">Pruning</option>
+          <option value="Spraying">Spraying</option>
+          <option value="Transplanting">Transplanting</option>
+          <option value="Mulching">Mulching</option>
+          <option value="Thinning">Thinning</option>
+          <option value="Grafting">Grafting</option>
+          <option value="Tilling">Tilling</option>
+          <option value="Harvest Preparation">Harvest Preparation</option>
+          <option value="Soil Testing">Soil Testing</option>
+          <option value="Pest Control">Pest Control</option>
+          <option value="Fertilizer Application">Fertilizer Application</option>
+          <option value="Irrigation Maintenance">Irrigation Maintenance</option>
+          <option value="Crop Monitoring">Crop Monitoring</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="wage">Wage:</label>
+        <input type="number" id="wage" step="0.01" min="0" />
+      </div>
+      <div>
+        <label for="workDate">Work Date:</label>
+        <input type="date" id="workDate" />
+      </div>
+      <div>
+        <label for="crop">Crop:</label>
+        <select id="crop">
+          <option value="">Select Crop</option>
+          <option value="Wheat">Wheat</option>
+          <option value="Rice">Rice</option>
+          <option value="Corn">Corn</option>
+          <option value="Soybean">Soybean</option>
+          <option value="Cotton">Cotton</option>
+        </select>
+      </div>
+      <div>
+        <label for="season">Season:</label>
+        <select id="season">
+          <option value="">Select Season</option>
+          <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
+          <option value="Autumn">Autumn</option>
+          <option value="Winter">Winter</option>
+        </select>
+      </div>
+      <div>
+        <label for="balance">Balance:</label>
+        <input type="number" id="balance" step="0.01" min="0" />
+        <button type="button" id="calc-btn" title="Calculator">&#x1F522;</button>
+      </div>
+      <div>
+        <label for="status">Status:</label>
+        <select id="status">
+          <option value="current">Current</option>
+          <option value="old">Old</option>
+          <option value="deleted">Deleted</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">Save</button>
+      <button type="button" id="cancel-btn" style="display:none;">Cancel</button>
+    </form>
+
+    <table id="labour-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Work Type</th>
+          <th>Wage</th>
+          <th>Work Date</th>
+          <th>Crop</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Login/Register Modal -->
+  <div id="auth-modal" class="auth-modal">
+    <div class="auth-modal-content">
+      <span id="auth-close" class="auth-close">&times;</span>
+      <div class="auth-tabs">
+        <button id="login-tab" class="auth-tab active">Login</button>
+        <button id="register-tab" class="auth-tab">Register</button>
+      </div>
+      <div id="login-form-container" class="auth-form-container">
+        <form id="login-form">
+          <p>If you are already a member, please login.</p>
+          <div>
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+      </div>
+      <div id="register-form-container" class="auth-form-container" style="display:none;">
+        <form id="register-form">
+          <p>If you are not a member, please register.</p>
+          <div>
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div>
+            <label for="register-confirm-password">Confirm Password:</label>
+            <input type="password" id="register-confirm-password" required />
+          </div>
+          <button type="submit" class="btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
